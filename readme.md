@@ -25,4 +25,6 @@
 用到的扩展包：
 
 markdown 编辑器 axhello/laravel-markdown-editor
-图片处理 intervention/image
+
+
+图片处理  intervention/image 
