@@ -9,7 +9,7 @@
     <!--[if IE]>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <![endif]-->
-    <title></title>
+    <title>{{config('title')}}</title>
     <!-- BOOTSTRAP CORE STYLE CSS -->
     <link href="{{ asset('assets/home/css/bootstrap.css') }}" rel="stylesheet" />
     <!-- FONTAWESOME STYLE CSS -->

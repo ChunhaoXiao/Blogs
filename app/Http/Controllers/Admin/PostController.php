@@ -121,7 +121,7 @@ class PostController extends Controller
         $post = Post::findOrFail($id);
         $post->fill($top);
         $post->update($request->all());
-        return redirect(route('posts.index'));
+        return redirect()->route('posts.index');
     }
 
     /**
@@ -140,7 +140,7 @@ class PostController extends Controller
         $files =  $request->file();
         $subdir = date('Ym',time()) ;
         foreach($files as $file) {
-            $img = str_replace('public', '', $file->store('public/upload/'.$subdir.'/'));
+            $img = $file->store('upload/'.$subdir.'/');
         }
         $file = $request->session()->get('file');
         $fileArr = $file ? $file.'##'.$img : $img ;
@@ -148,7 +148,7 @@ class PostController extends Controller
 
         $data['success'] = 1 ;
         $data['message'] = 'ok';
-        $data['url'] = asset('storage'.$img) ;
+        $data['url'] = asset('storage/'.$img) ;
         return response()->json($data, 200);
     }
 

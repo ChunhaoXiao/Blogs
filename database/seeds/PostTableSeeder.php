@@ -3,6 +3,7 @@ use Illuminate\Database\Seeder;
 use App\Models\Category ;
 use App\Models\User ;
 use App\Models\Tag ;
+use App\Models\Post ;
 class PostTableSeeder extends Seeder
 {
     /**
@@ -31,6 +32,7 @@ class PostTableSeeder extends Seeder
         }  
         //$tagid = $tags->pluck('id');
         $categories->each(function($cate) use($tags){
+            Post::flushEventListeners() ;
             $cate->posts()->saveMany(factory(App\Models\Post::class,2)->make())->each(function($p) use($tags){
                 $p->user_id = User::inRandomOrder()->first()->id;
                 $p->save() ;

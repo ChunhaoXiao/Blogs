@@ -32,7 +32,7 @@ class PostObserver
     		}
     	}
 
-    	/*if($files = request()->session()->get('file'))
+    	if($files = request()->session()->get('file'))
     	{
     		foreach(explode('##', $files) as $file)
     		{
@@ -40,7 +40,7 @@ class PostObserver
     		}	
     		$post->pics()->createMany($data);
             request()->session()->forget('file');
-    	}*/	
+    	}
     }
 
     //删除文章事件
