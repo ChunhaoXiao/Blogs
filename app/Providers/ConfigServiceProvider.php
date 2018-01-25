@@ -15,7 +15,14 @@ class ConfigServiceProvider extends ServiceProvider
     public function boot()
     {
         //
-       config(Config::all()->pluck('value','name')->toArray());
+        try
+        {
+            config(Config::all()->pluck('value','name')->toArray());
+        }
+        catch(\Exception $e)
+        {
+            \Log::info("Database connection not established");
+        } 
 
     }
 
