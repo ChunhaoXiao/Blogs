@@ -32,7 +32,7 @@
                     </dd>
                     @auth
                         @if(Auth::user()->id!=$comment->user_id)
-                        <p class="text-right "> <a class="text-muted" href="javascript:void(0)">回复</a> </p>
+                        <p class="text-right "> <a class="text-muted" href="javascript:void(0)">回复</a><input type="hidden" name="comment_id" value="{{$comment->id}}"> </p>
                         @endif
                     @endauth
                 </dd>
@@ -44,6 +44,7 @@
     	<form method="post" action="{{ route('comment_add',['post_id'=>$post->id]) }}" id="comment_form">
     		<label>添加评论</label>
             <span id="errmsg"></span>
+            <input name="reply_to_comment" >
     		   
                 <textarea id="comment" class="form-control" name="content" rows="3" cols="20"></textarea>
                 {{ csrf_field() }}
@@ -60,6 +61,8 @@
                 var content = $("#comment").val();
                 $("#comment").val(content+'@'+user+' ') ;
                 document.getElementById('comment_div').scrollIntoView();
+                var comment_id = $(this).parent().find("input").val() ;
+                $("input[name='reply_to_comment']").val(comment_id);
             });
 
             $("#comment_form textarea").on('focus',function() {

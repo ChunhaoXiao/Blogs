@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Comment extends Model
 {
     //
-    protected $fillable = ['user_id', 'post_id', 'content', 'reply_to_user'];
+    protected $fillable = ['user_id', 'post_id', 'content', 'reply_to_user', 'reply_to_comment'];
     public function Post()
     {
     	return $this->belongsTo('App\Models\Post')->withDefault();
@@ -23,10 +23,4 @@ class Comment extends Model
         return $this->morphMany('App\Models\Thumb', 'thumbable');
     }
 
-    public function setReplyToUserAttribute($name)
-    {
-    	$user = \App\Models\User::where('name', ltrim($name, '@'))->first();
-    	$reply_to_user = $user && $user->id != \Auth::user()->id ? $user->id : 0 ;
-    	$this->attributes['reply_to_user'] = $reply_to_user ;
-    }
 }

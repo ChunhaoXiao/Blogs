@@ -8,7 +8,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use App\Models\Comment ;
 
-class CommentReplied extends Mailable
+class CommentRepliedMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -17,13 +17,12 @@ class CommentReplied extends Mailable
      *
      * @return void
      */
-    public $comment ;
-   // public $content ;
-    public function __construct(Comment $comment)
+    public $comment;
+    public $origin ;
+    public function __construct(Comment $comment, Comment $origin)
     {
-        //
-        $this->comment = $comment ;
-       // $this->content = \App\Models\Comment::find($comm) ;
+        $this->comment = $comment;
+        $this->origin = $origin;
     }
 
     /**
@@ -33,6 +32,6 @@ class CommentReplied extends Mailable
      */
     public function build()
     {
-        return $this->view('email.comment')->subject('你的评论被回复');
+        return $this->markdown('email.comment')->subject('您的评论被回复');
     }
 }

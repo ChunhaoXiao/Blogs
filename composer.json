@@ -8,6 +8,7 @@
         "php": ">=7.0.0",
         "axhello/laravel-markdown-editor": "dev-master",
         "fideloper/proxy": "~3.3",
+        "guzzlehttp/guzzle": "^6.3",
         "intervention/image": "^2.4",
         "laramall/laravel-system-info": "^1.0",
         "laravel/framework": "5.5.*",
