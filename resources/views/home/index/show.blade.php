@@ -85,8 +85,8 @@
                     },
                     error:function(msg) {
                         
-                        if(msg.status == 400) {
-                            alert(msg.responseJSON.errors);
+                        if(msg.status == 401) {
+                            alert(msg.responseJSON.message);
                         } else {
                             console.log(msg.responseJSON.errors);
                             $errors = msg.responseJSON.errors ;
@@ -120,8 +120,9 @@
                         }  
                     },
                     error:function(data) {
-                        //console.log(data) ;
-                        alert(data.responseJSON.msg);
+                        //console.log(data.responseJSON.message) ;
+                        alert(data.responseJSON.message);
+                          
                     }
                 });
             });

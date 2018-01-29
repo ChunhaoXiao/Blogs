@@ -28,7 +28,10 @@ class EventServiceProvider extends ServiceProvider
         ],
         'Illuminate\Auth\Events\Login' => [
             'App\Listeners\SaveLoginData',
-        ]
+        ],
+        'App\Events\CommentCreated' => [
+            'App\Listeners\SendNotice',
+        ],
 
     ];
 

@@ -48,6 +48,10 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        if($exception instanceof \Illuminate\Auth\AuthenticationException ){
+
+            return response(['message' => '请登录'], 401);
+        }
         return parent::render($request, $exception);
     }
 }

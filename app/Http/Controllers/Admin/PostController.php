@@ -79,7 +79,6 @@ class PostController extends Controller
     {
         $top['category_top'] = $top['global_top'] = $request->top ;
         $data = $request->only(['title','category_id','tag' ,'body']);
-        //触发PostObserver里面的saved()方法
         $post = Auth::user()->posts()->create(array_merge($data, $top));
         return redirect(route('posts.index'))->with('status','添加成功');
     }

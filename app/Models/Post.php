@@ -54,19 +54,23 @@ class Post extends Model
     {
     	return $this->belongsTo('App\Models\User');
     }
-	public function scopeOfCate($query, $cate) {
-		return  $query->where('category_id', $cate) ;
-	}
 
-	public function scopeOfTitle($query, $title)
-	{
-		return  $query->where('title', 'like', '%'.$title.'%');
-	}
-
-	public function scopeOfContent($query, $str)
-	{
-		return $query->where('title', 'like', '%'.$str.'%')->orWhere('body','like', '%'.$str.'%');
-	}
+    public function scopeOfFilter($query, $request)
+    {
+        if($request->category)
+        {
+            $query = $query->where('category_id', $request->category);
+        } 
+        if($request->content)
+        {
+            $qeury = $query->where('title', 'like', '%'.$request->content.'%')->orWhere('body', 'like', '%'.$request->content.'%');
+        }  
+        if($request->tag)
+        {
+            $query = \App\Models\Tag::where('name', $request->tag)->first()->posts();
+        } 
+        return $query ; 
+    }
 
 	public function order($query, $order)
 	{

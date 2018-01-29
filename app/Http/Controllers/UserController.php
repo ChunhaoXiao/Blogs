@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Hash;
 use Image ;
 use Storage ;
+use Auth;
 class UserController extends Controller
 {
     //
@@ -50,19 +51,20 @@ class UserController extends Controller
 
     public function avatar()
     {
-        $user = auth()->user();
+        $user = Auth::user();
         return view('home.user.avatar', ['user' => $user]);
     }
+
+    //上传头像
     public function storeAvatar(Request $request)
     {
         $this->validate($request,[
             'file' => "required|image|mimes:jpeg,png,jpg|max:2048",
         ]);
-        $user = auth()->user() ;
+        $user = Auth::user() ;
         if($request->file('file')->isValid())
         {
-            $userid = $user->id;
-            $dirname = ceil($userid/100) ;
+            $dirname = ceil($user->id/100) ;
             $fileName = $request->file('file')->store('public/avatar/'.$dirname.'/big');
             $baseName = pathinfo($fileName, PATHINFO_BASENAME);
         }
@@ -72,23 +74,19 @@ class UserController extends Controller
             $para = explode(',', $cropped_value);
             $image = Image::make($request->file('file')->getRealPath());
             $image->rotate($para[4] * -1);
-            $avatar = $image->crop($para[0], $para[1], $para[2], $para[3])->save('storage/avatar/'.$dirname.'/thumb/'.$baseName);
+            $image->crop($para[0], $para[1], $para[2], $para[3])->save('storage/avatar/'.$dirname.'/thumb/'.$baseName);
         }
-        //dump($image);
-        $user->avatar = $dirname.'/thumb/'.$baseName;
-        $user->save();
+        $avatar = $dirname.'/thumb/'.$baseName;
         if($user->avatar)
         {    //删除旧头像文件
-            /*if(Storage::disk('local')->exists($user->avatar))
+            if(Storage::disk('local')->exists('avatar/'.$user->avatar))
             {
-                //
-            }  */ 
+                Storage::delete('avatar/'.$user->avatar);
+            }   
         }
-        //$user->avatar = 
+        $user->avatar = $dirname.'/thumb/'.$baseName;
+        $user->save();
         return response()->json(['success' => 'ok'], 200);    
-
-
-        //return response()->json(['data' =>$request->cropped_value],200);
     }
 }
 
