@@ -38,8 +38,9 @@ class CommentController extends Controller
     }
 
     //删除评论
-    public function destroy()
+    public function destroy(Comment $comment)
     {
-
+        $this->authorize('delete', $comment);
+        $comment->delete();
     }
 }
