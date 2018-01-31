@@ -8,11 +8,12 @@ use App\Models\Post ;
 use App\Models\Tag ;
 use App\Http\Requests\StorePost;
 use App\Models\Category ;
-use MDEditor ;
+//use MDEditor ;
 use App\Models\User ;
 use Auth ;
 use App\Events\PostSaved ;
 use App\Events\PostDeleted ;
+use EndaEditor;
 class PostController extends Controller
 {
     function __construct() {
@@ -136,19 +137,20 @@ class PostController extends Controller
     }
 
     public function upload(Request $request) {
-        $files =  $request->file();
-        $subdir = date('Ym',time()) ;
-        foreach($files as $file) {
-            $img = $file->store('upload/'.$subdir.'/');
-        }
-        $file = $request->session()->get('file');
-        $fileArr = $file ? $file.'##'.$img : $img ;
-        $request->session()->flash('file', $fileArr); 
+        if($request->file('image')->isValid())
+        {
+            $subdir = date('Ym',time()) ;
+            $img = $request->image->store('upload/'.$subdir.'/');
 
-        $data['success'] = 1 ;
-        $data['message'] = 'ok';
-        $data['url'] = asset('storage/'.$img) ;
-        return response()->json($data, 200);
+            $file = $request->session()->get('file');
+            $fileArr = $file ? $file.'##'.$img : $img ;
+            $request->session()->flash('file', $fileArr); 
+
+            $data['status'] = 0 ;
+            $data['message'] = '';
+            $data['url'] = asset('storage/'.$img) ;
+            return response()->json($data);
+        }   
     }
 
     public function restore($id)

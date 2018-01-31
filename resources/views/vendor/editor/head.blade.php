@@ -1,39 +1,45 @@
-<link rel="stylesheet" href="{{ asset('plugin/editor/css/editormd.css') }}"/>
-<script src="{{ asset('plugin/editor/js/jquery.min.js') }}"></script>
-<script src="{{ asset('plugin/editor/js/editormd.min.js') }}"></script>
-<meta name="token" content="{{ csrf_token() }}" />
+<link href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.css" rel="stylesheet">
+<link rel="stylesheet" href="http://cdn.bootcss.com/codemirror/4.10.0/codemirror.min.css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/highlight.js/8.4/styles/default.min.css">
+<script src="http://cdn.bootcss.com/highlight.js/8.4/highlight.min.js"></script>
+<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.js"></script>
+<script src="http://cdn.bootcss.com/marked/0.3.2/marked.min.js"></script>
+<script type="text/javascript" src="http://cdn.bootcss.com/codemirror/4.10.0/codemirror.min.js"></script>
+<script type="text/javascript" src="http://cdn.bootcss.com/zeroclipboard/2.2.0/ZeroClipboard.min.js"></script>
 
-<script type="text/javascript">
+<link rel="stylesheet" href="{{ asset('plugin/editor/css/pygment_trac.css') }}">
+<link rel="stylesheet" href="{{ asset('plugin/editor/css/editor.css') }}">
+<script type="text/javascript" src="{{ asset('plugin/editor/js/highlight.js') }}"></script>
+<script type="text/javascript" src="{{ asset('plugin/editor/js/modal.js') }}"></script>
+<script type="text/javascript" src="{{ asset('plugin/editor/js/MIDI.js') }}"></script>
+<script type="text/javascript" src="{{ asset('plugin/editor/js/fileupload.js') }}"></script>
+<script type="text/javascript" src="{{ asset('plugin/editor/js/bacheditor.js') }}"></script>
+<meta name="csrf-token" content="{{ csrf_token() }}" />
+<script type="text/javascript" src="{{ asset('plugin/editor/js/bootstrap3-typeahead.js') }}"></script>
+
+<script>
     $.ajaxSetup({
         headers: {
-            'X-CSRF-TOKEN': $('meta[name="token"]').attr('content')
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-    var MDEditor;
+
     $(function() {
-        // You can custom Emoji's graphics files url path
-        editormd.emoji     = {
-            path  : "http://www.emoji-cheat-sheet.com/graphics/emojis/",
-            ext   : ".png"
-        };
-        // Twitter Emoji (Twemoji)  graphics files url path
-        editormd.twemoji = {
-            path : "http://twemoji.maxcdn.com/72x72/",
-            ext  : ".png"
-        };
-        MDEditor = editormd("mdEditor", {
-            width   : "{{ config('editor.width') }}",
-            height  : 640,
-            path    : "/plugin/editor/lib/",
-            saveHTMLToTextarea : true,
-            searchReplace : true,
-            codeFold : true,
-            toc : true,
-            emoji : true,
-            taskList : true,
-            imageUpload : true,
-            imageFormats : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
-            imageUploadURL : "{{ url(config('editor.uploadUrl')) }}"
-        });
+        url = "{{ url(config('editor.uploadUrl')) }}";
+
+        @if(config('editor.ajaxTopicSearchUrl',null))
+        ajaxTopicSearchUrl = "{{ url(config('editor.ajaxTopicSearchUrl')) }}";
+        @else
+        ajaxTopicSearchUrl = null;
+        @endif
+
+        var myEditor = new Editor(url,ajaxTopicSearchUrl);
+        myEditor.render('#myEditor');
     });
 </script>
+
+<style>
+    .editor{
+        width:{{ config('editor.width') }};
+    }
+</style>

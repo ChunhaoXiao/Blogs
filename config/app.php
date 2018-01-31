@@ -177,10 +177,11 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
-        Axhello\Editor\MDEditorServiceProvider::class,
+        //Axhello\Editor\MDEditorServiceProvider::class,
 
         Intervention\Image\ImageServiceProvider::class,
         App\Providers\ConfigServiceProvider::class,
+        YuanChao\Editor\EndaEditorServiceProvider::class,
 
 
 
@@ -233,8 +234,9 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
-        'MDEditor' => Axhello\Editor\Facade\MDEditorFacade::class,
+       // 'MDEditor' => Axhello\Editor\Facade\MDEditorFacade::class,
         'Image' => Intervention\Image\Facades\Image::class,
+        'EndaEditor' => YuanChao\Editor\Facade\EndaEditorFacade::class,
 
     ],
 

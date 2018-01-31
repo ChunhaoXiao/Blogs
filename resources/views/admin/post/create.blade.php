@@ -4,7 +4,7 @@
 
 @endsection
 @section('content')
-@include('editor::head')
+
 
     <form enctype="multipart/form-data" action= {{route('posts.store')}}  method="post" class="form form-horizontal">
    	    <div class="row cl">
@@ -33,7 +33,7 @@
          <div class="row cl"> 
             <label class="form-label col-md-2">置顶</label>
             <div class="formControls col-md-3">
-               <select name="top" class="select">
+               <select  name="top" class="select">
                   <option vlaue="0">无</option>
                   <option value="global">全局置顶</option>
                   <option value="category">分类置顶</option>
@@ -42,10 +42,12 @@
          </div>
    	    <div class="row cl">
 
+
+
    	    	<label class="form-label col-md-2">内容</label>
    	    	
-   	    	<div id="mdEditor">
-   	    		<textarea  name="body"></textarea>
+   	    	<div class="col-md-5 editor">
+   	    		<textarea id="myEditor"  name="body"></textarea>
    	    	</div>
    	    </div>	
 	   	{{csrf_field()}}
@@ -59,6 +61,7 @@
 
    </form>
    @include('error');
+
 
 @endsection
 @section('js')
@@ -74,5 +77,6 @@
      });
     
 </script>
+@include('editor::head')
     
 @endsection

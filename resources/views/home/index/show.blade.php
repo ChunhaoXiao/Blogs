@@ -44,7 +44,7 @@
     	<form method="post" action="{{ route('comment_add',['post_id'=>$post->id]) }}" id="comment_form">
     		<label>添加评论</label>
             <span id="errmsg"></span>
-            <input name="reply_to_comment" >
+            <input type="hidden" name="reply_to_comment" >
     		   
                 <textarea id="comment" class="form-control" name="content" rows="3" cols="20"></textarea>
                 {{ csrf_field() }}

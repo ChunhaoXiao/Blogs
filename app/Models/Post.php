@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-use MDEditor ;
+use EndaEditor ;
 
 class Post extends Model
 {
@@ -42,7 +42,7 @@ class Post extends Model
 	}
 
 	public function getBodyAttribute($value) {
-	    return MDEditor::MarkDecode($value);
+	    return EndaEditor::MarkDecode($value);
 	}
 
 	public function pics()
