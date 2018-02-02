@@ -29,7 +29,8 @@ class SendNotice
      */
     public function handle(CommentCreated $event)
     {
-        $event->comment->post->update(['last_replied' => \Carbon\Carbon::now()]);
+        $event->comment->post->last_replied = \Carbon\Carbon::now();
+        $event->comment->post->save();
         if($event->comment->reply_to_user)
         {
             $user = \App\Models\User::find($event->comment->reply_to_user);

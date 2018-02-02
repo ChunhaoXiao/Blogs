@@ -26,35 +26,7 @@ class PostController extends Controller
      */
     public function index(Request $request)
     {
-        $where['ofCate'] = $request->category;
-        $where['ofTitle'] = $request->title;
-        if($where = array_filter($where,'strlen')){
-            foreach($where as $key => $value)
-            {
-                $query= isset($query) ? $query->$key($value) : Post::$key($value) ;
-            }    
-        }
-        !isset($query) && $query = Post::query() ;
-        $orderby = $request->orderby;
-        $posts = $query->when($orderby, function($query) use ($orderby){
-            list($field, $type) = explode('@', $orderby);
-            if(in_array($field, ['created_at', 'updated_at', 'last_replied']))
-            {
-                $query->orderBy($field, $type) ;
-            } 
-            elseif($field == 'replies')
-            {
-                $query->withCount('comments')->orderBy('comments_count',$type);
-            }   
-            else
-            {
-                $query->orderBy('global_top','desc')->orderBy('created_at','desc');
-            } 
-        },
-        function($query){
-            $query->orderBy('global_top','desc')->orderBy('created_at','desc') ;
-        })->with(['category','user'])->withCount('comments')->paginate(20);
-        
+        $posts = Post::ofFilter($request)->order($request)->with(['category','user'])->withCount('comments')->paginate(20);
         $categories = Category::all();
         return view('admin.post.index', ['posts' => $posts,'categories' => $categories]);
     }

@@ -10,7 +10,7 @@ class AdminController extends Controller
 {    function __construct() {
         $this->middleware('checkmanager');
 	}
-    //
+    
     function index() {
 
     	return view('admin.admin.index');

@@ -71,33 +71,28 @@ class Post extends Model
         } 
         return $query ; 
     }
-
-	public function order($query, $order)
-	{
-		if($orderby)
-        {
+    
+    public function scopeOrder($query, $request)
+    {
+        $orderby = $request->orderby;
+        $query = $query->when($orderby, function($query) use ($orderby){
             list($field, $type) = explode('@', $orderby);
             if(in_array($field, ['created_at', 'updated_at', 'last_replied']))
             {
-                $query = $query->orderBy($field, $type) ;
+               return  $query->orderBy($field, $type) ;
             } 
             elseif($field == 'replies')
             {
-                $query = $query->withCount('comments')->orderBy('comments_count',$type);
+               return  $query->withCount('comments')->orderBy('comments_count',$type);
             }   
             else
             {
-                $query = $query->orderBy('global_top','desc')->orderBy('created_at','desc');
-            }    
-        }
-        else
-        {
-            $query = $query->orderBy('global_top','desc')->orderBy('created_at','desc');
-        }  
-        return $query ;  
-	}
-
-
-
-	
+               return  $query->orderBy('global_top','desc')->orderBy('created_at','desc');
+            } 
+        },
+        function($query){
+            return $query->orderBy('global_top','desc')->orderBy('created_at','desc') ;
+        });
+        return $query ;
+    }
 }

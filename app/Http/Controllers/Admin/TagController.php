@@ -29,10 +29,8 @@ class TagController extends Controller
 
     public function destroy(Tag $tag)
     {
-    	
         $tag->posts()->detach();
         $tag->delete();
-    	//return redirect(route('tags.index'));
         return response()->json(['success' => '删除成功'] ,200);
     }
 }

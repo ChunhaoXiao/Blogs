@@ -12,7 +12,7 @@ class Comment extends Model
     protected $dispatchesEvents = [
         'created' => CommentCreated::class,
     ];
-    public function Post()
+    public function post()
     {
     	return $this->belongsTo('App\Models\Post')->withDefault();
     }
@@ -40,6 +40,19 @@ class Comment extends Model
         $comment->reply_to_user = isset($user) ? $user->id : 0 ;
         $comment->content = $request->content;
         return $comment ;
+    }
+
+    public function scopeFilter($query, $request)
+    {
+        if($request->keywords)
+        {
+            $query = $query->where('content', 'like', '%'.$request->keywords.'%');
+        }    
+        if($request->post_id)
+        {
+            $query = $query->where('post_id', $request->post_id);
+        }    
+        return $query ;
     }
 
 }
