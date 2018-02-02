@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCommentThumbs extends Migration
+class Create_Thumbs extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateCommentThumbs extends Migration
      */
     public function up()
     {
-        Schema::create('comment_thumbs', function (Blueprint $table) {
+        Schema::create('thumbs', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('thumbtable_id');
-            $table->integer('thumbtable_type');
+            $table->integer('thumbable_id');
+            $table->integer('thumbable_type');
             $table->integer('user_id');
             $table->timestamps();
         });
@@ -29,6 +29,6 @@ class CreateCommentThumbs extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('comment_thumbs');
+        Schema::dropIfExists('thumbs');
     }
 }
