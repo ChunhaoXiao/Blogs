@@ -42,5 +42,6 @@ class CommentController extends Controller
     {
         $this->authorize('delete', $comment);
         $comment->delete();
+        return response()->json(['msg' => '删除成功'] , 200);
     }
 }

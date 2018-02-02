@@ -21,6 +21,7 @@ Route::post('storepass','UserController@storePassword')->name('user.storepass');
 Route::get('user/avatar','userController@avatar')->name('user.avatar');
 Route::post('user/storeavatar','UserController@storeAvatar')->name('user.storeavatar');
 Route::post('comment/thumb/{comment}','CommentController@thumb')->name('comment.thumb');
+Route::post('delcomment/{comment}', 'CommentController@destroy')->name('comment.delete');
 
 Route::group(['prefix' => 'admin','namespace'=>'Admin'],function(){
 

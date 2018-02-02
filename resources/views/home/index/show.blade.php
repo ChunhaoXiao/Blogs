@@ -23,8 +23,8 @@
 
             <dl class="dl-horizontal">
                 <dt>{{$comment->user->name}}</dt>
-                <dd>{{$comment->content}}</dd>
-                <dd><small class="text-muted">{{$comment->created_at}}</small>  
+                <dd>{{$comment->content}}    </dd>
+                <dd><small class="text-muted">{{$comment->created_at}}</small>  <small><span>@can('delete', $comment)<a class="glyphicon glyphicon-trash" data-url="{{route('comment.delete', $comment)}}" href="javascript:;"></a> @endcan</span></small>
                     <dd> <a href="javascript:;" data-url="{{route('comment.thumb',$comment)}}" class="glyphicon glyphicon-thumbs-up"
                     @if($comment->thumbs()->where('user_id',auth()->id())->first()) style="color:red" @endif aria-hidden="true">
                          </a> 
@@ -35,7 +35,10 @@
                         <p class="text-right "> <a class="text-muted" href="javascript:void(0)">回复</a><input type="hidden" name="comment_id" value="{{$comment->id}}"> </p>
                         @endif
                     @endauth
+
+
                 </dd>
+
             </dl>
             
         @endforeach
@@ -123,6 +126,23 @@
                         //console.log(data.responseJSON.message) ;
                         alert(data.responseJSON.message);
                           
+                    }
+                });
+            });
+
+            //删除评论
+            $(".glyphicon-trash").on('click', function(){
+                var url = $(this).data('url');
+                $.ajax({
+                    url:url,
+                    type:'post',
+                    success:function(data){
+                        location.reload();
+                        //console.log(data);
+                        //alert(data);
+                    },
+                    error:function(data){
+
                     }
                 });
             });
