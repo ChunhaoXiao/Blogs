@@ -16,7 +16,7 @@ class CreateThumbs extends Migration
         Schema::create('thumbs', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('thumbable_id');
-            $table->integer('thumbable_type');
+            $table->string('thumbable_type');
             $table->integer('user_id');
             $table->timestamps();
         });
