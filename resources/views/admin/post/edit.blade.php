@@ -70,9 +70,9 @@
 
 @endsection
 @section('js')
-   <script>
+  
      
+    @include('editor::head')
     
-</script>
     
 @endsection
