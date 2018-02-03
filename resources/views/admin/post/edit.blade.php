@@ -4,7 +4,6 @@
 
 @endsection
 @section('content')
-@include('editor::head')
 
     <form enctype="multipart/form-data" action= {{route('posts.update',$post)}}  method="post" class="form form-horizontal">
    	    <div class="row cl">
@@ -44,8 +43,8 @@
 
    	    	<label class="form-label col-md-2">内容</label>
    	    	
-   	    	<div id="mdEditor">
-   	    		<textarea  name="body">{{ $post->getAttributes()['body'] }}</textarea>
+   	    	<div class="col-md-5 editor">
+   	    		<textarea id="myEditor"  name="body">{{ $post->getAttributes()['body'] }}</textarea>
    	    	</div>
    	    </div>	
 	   	{{csrf_field()}}
