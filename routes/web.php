@@ -18,7 +18,7 @@ Route::get('notifications','NotificationsController@index')->name('notifications
 Route::get('user/setting','UserController@index')->name('user.index');
 Route::get('user/changepass','UserController@changePassword')->name('user.changepass');
 Route::post('storepass','UserController@storePassword')->name('user.storepass');
-Route::get('user/avatar','userController@avatar')->name('user.avatar');
+Route::get('user/avatar','UserController@avatar')->name('user.avatar');
 Route::post('user/storeavatar','UserController@storeAvatar')->name('user.storeavatar');
 Route::post('comment/thumb/{comment}','CommentController@thumb')->name('comment.thumb');
 Route::post('delcomment/{comment}', 'CommentController@destroy')->name('comment.delete');
