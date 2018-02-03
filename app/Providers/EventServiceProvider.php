@@ -32,6 +32,9 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\CommentCreated' => [
             'App\Listeners\SendNotice',
         ],
+        'App\Events\UserDeleted' => [
+            'App\Listeners\DeleteUserRelated',
+        ],
 
     ];
 

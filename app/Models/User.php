@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Database\Eloquent\Builder;
+use App\Events\UserDeleted ;
 
 class User extends Authenticatable
 {
@@ -22,6 +23,10 @@ class User extends Authenticatable
     ];
     protected $casts = [
         'forbid' => 'array' ,
+    ];
+
+    protected $dispatchesEvents = [
+        'deleted' => UserDeleted::class,
     ];
 
     /**
@@ -45,6 +50,11 @@ class User extends Authenticatable
     public function comments()
     {
         return $this->hasMany('App\Models\Comment');
+    }
+
+    public function thumbs()
+    {
+        return $this->hasMany('App\Models\Thumb');
     }
 
 }

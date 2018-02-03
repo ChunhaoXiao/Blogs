@@ -24,11 +24,6 @@ class CheckManager
         {
             return redirect(route('indexes.index'));
         }    
-        //if(!Auth::user()->hasRole('编辑')){
-            //abort(401);
-			//return redirect('/');
-       // }
-		
 		
         return $next($request);
     }

@@ -13,9 +13,8 @@ use Spatie\Permission\Models\Permission;
 
 class PermissionController extends Controller
 {
-    public function __construct()
-    {
-
+    function __construct() {
+        $this->middleware('checkmanager');
     }
     /**
      * Display a listing of the resource.

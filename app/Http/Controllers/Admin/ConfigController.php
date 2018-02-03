@@ -11,6 +11,10 @@ use App\Models\Config ;
 class ConfigController extends Controller
 {
     //
+    function __construct() {
+        $this->middleware('checkmanager');
+    }
+
     public function base()
     {
     	$fields = [

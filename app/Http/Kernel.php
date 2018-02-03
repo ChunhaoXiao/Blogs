@@ -61,6 +61,7 @@ class Kernel extends HttpKernel
 		'checkmanager' => \App\Http\Middleware\CheckManager::class,
         'viewtimes' => \App\Http\Middleware\ViewTimes::class,
         'wordfilter' => \App\Http\Middleware\WordFilter::class,
+        'isadmin' => \App\Http\Middleware\RedirectIfIsAdmin::class,
        // 'accessgate' => \App\Http\Middleware\AccessGate::class,
     ];
 }

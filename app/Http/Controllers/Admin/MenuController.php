@@ -8,6 +8,9 @@ use App\Models\Menu ;
 
 class MenuController extends Controller
 {
+    function __construct() {
+        $this->middleware('checkmanager');
+    }
     /**
      * Display a listing of the resource.
      *

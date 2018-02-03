@@ -14,8 +14,8 @@ use Validator ;
 
 class UserController extends Controller
 {
-    public function __construct() {
-        //注册中间件
+    function __construct() {
+        $this->middleware('checkmanager');
     }
     /**
      * Display a listing of the resource.
@@ -36,7 +36,6 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
         return view('admin.user.create_and_edit');
     }
 
@@ -48,7 +47,6 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
         $this->validate($request,[
             'name' => 'required|unique:users|max:30',
             'password' => 'required',
@@ -115,13 +113,11 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::findOrfail($id);
+        $user = User::findOrFail($id);
         $user->delete() ;
-        $user->comments()->delete();
-        $user->posts()->delete();
-        //\App\Models\Thunmb::where('user_id', $user->id)->delete() ;
         return response()->json(['success' => '删除成功'], 200);
     }
+
     public function setPerm(Request $request,User $user) 
     {
         $permissions = Permission::all()->groupBy('groups');

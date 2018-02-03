@@ -9,6 +9,9 @@ use App\Models\Post ;
 
 class CategoryController extends Controller
 {
+    function __construct() {
+        $this->middleware('checkmanager');
+    }
     /**
      * Display a listing of the resource.
      *

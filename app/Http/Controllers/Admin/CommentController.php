@@ -9,6 +9,10 @@ use App\Models\Comment;
 class CommentController extends Controller
 {
     //
+    function __construct() {
+        $this->middleware('checkmanager');
+    }
+    
     public function index(Request $request)
     {
     	$comments = Comment::Filter($request)->with(['post','user'])->orderBy('created_at','desc')->paginate();

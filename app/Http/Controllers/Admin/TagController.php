@@ -7,7 +7,10 @@ use App\Http\Controllers\Controller;
 use App\Models\Tag ;
 class TagController extends Controller
 {
-    //
+    function __construct() {
+        $this->middleware('checkmanager');
+    }
+
     public function index()
     {
     	$tag = Tag::where(function($query){return  request('word') ? $query->where('name','like','%'.request('word').'%'):$query ;})->

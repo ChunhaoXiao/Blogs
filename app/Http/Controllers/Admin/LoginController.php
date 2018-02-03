@@ -11,16 +11,25 @@ class LoginController extends Controller
 {
     //
     use AuthenticatesUsers;
+
     protected $redirectTo = '/admin' ;
+
+    public function __construct()
+    {
+        $this->middleware('isadmin')->except('adminLogout');
+    }
+
     public function showLoginForm()
     {
     	return view('admin.admin.login');
     }
+
 	public function adminLogout()
 	{
 		Auth::logout();
 		return redirect(route('admin.index'));
 	}
+
     public function dologin(Request $request)
     {
         if(Auth::attempt(['email' => $request->email, 'password' => $request->password]))
