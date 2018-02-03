@@ -21,7 +21,7 @@ class RedirectIfIsAdmin
             return redirect('/admin');
         }*/
         $user = Auth::guard($guard)->user() ;
-        if($user && $user->is_admin)
+        if($user && $user->is_admin==1)
         {
              return redirect('/admin');
         }    

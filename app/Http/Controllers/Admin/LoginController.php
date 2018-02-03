@@ -36,5 +36,6 @@ class LoginController extends Controller
         {
             return redirect()->intended('/admin');
         }
+        return redirect()->route('admin.login');
     }
 }
