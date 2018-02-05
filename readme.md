@@ -5,9 +5,11 @@
 
 1: 克隆代码到本地  git clone https://github.com/ChunhaoXiao/Blogs.git
 
-2: 运行  composer install
+2: 运行  composer update
 
 3: 复制配置文件 cp .env.example .env
+
+4:运行 php artisan key:generate
 
 4:修改配置文件 .env 的数据库配置  
 

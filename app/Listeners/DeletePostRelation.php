@@ -44,6 +44,6 @@ class DeletePostRelation
         $event->post->tags()->detach();
 
         //删除文章评论
-        //$event->post->comments()->delete();
+        $event->post->comments()->delete();
     }
 }
