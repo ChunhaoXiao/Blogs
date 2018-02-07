@@ -5,7 +5,7 @@
 
 1: 克隆代码到本地  git clone https://github.com/ChunhaoXiao/Blogs.git
 
-2: 运行  composer update
+2: 运行  composer install
 
 3: 复制配置文件 cp .env.example .env
 
