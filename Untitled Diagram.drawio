@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-11-18T11:28:59.379Z" agent="5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36" etag="5oIqdNsSsCnoHM8EApF1" version="15.8.2" type="github">
+<mxfile host="app.diagrams.net" modified="2021-11-18T11:43:43.827Z" agent="5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36" etag="mzvfJl-olwMQfkiVajDM" version="15.8.2" type="github">
   <diagram id="tkJnGF91Tr6Hp5H_-BvY" name="Page-1">
     <mxGraphModel dx="942" dy="614" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -78,7 +78,7 @@
           <mxGeometry x="190" y="490" width="320" height="20" as="geometry" />
         </mxCell>
         <mxCell id="R-MjW9YE-7VI5NUZe0La-47" value="ODS" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#b1ddf0;strokeColor=#10739e;" vertex="1" parent="1">
-          <mxGeometry x="780" y="100" width="60" height="80" as="geometry" />
+          <mxGeometry x="790" y="100" width="60" height="80" as="geometry" />
         </mxCell>
         <mxCell id="R-MjW9YE-7VI5NUZe0La-48" value="" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.625;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="R-MjW9YE-7VI5NUZe0La-1" target="R-MjW9YE-7VI5NUZe0La-47">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
@@ -92,6 +92,54 @@
         </mxCell>
         <mxCell id="R-MjW9YE-7VI5NUZe0La-49" value="通过sftp将已绑定医生的员&lt;br&gt;工数据、调查问卷信息、&lt;br&gt;CTA记录表、SSOCTA记录表&lt;br&gt;用户关注及取关历史记录表、&lt;br&gt;菜单点击记录表、&lt;br&gt;项目二维码扫描记录表、&lt;br&gt;会议签到人员数据、&lt;br&gt;辉瑞通行证登陆记录等&lt;br&gt;数据传递给ODS。每天0点推送" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
           <mxGeometry x="610" y="155" width="180" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="R-MjW9YE-7VI5NUZe0La-59" value="供应商调研接口" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="710" y="360" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="R-MjW9YE-7VI5NUZe0La-61" value="HCP Calendar 直播会议接口" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="710" y="470" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="R-MjW9YE-7VI5NUZe0La-62" value="身份信息回调更新接口" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="710" y="580" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="R-MjW9YE-7VI5NUZe0La-64" value="" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="710" y="690" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="R-MjW9YE-7VI5NUZe0La-65" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="590" y="720" as="sourcePoint" />
+            <mxPoint x="560" y="340" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="590" y="340" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="R-MjW9YE-7VI5NUZe0La-67" value="" style="endArrow=none;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" target="R-MjW9YE-7VI5NUZe0La-64">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="590" y="720" as="sourcePoint" />
+            <mxPoint x="450" y="470" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="R-MjW9YE-7VI5NUZe0La-68" value="" style="endArrow=none;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" target="R-MjW9YE-7VI5NUZe0La-62">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="590" y="610" as="sourcePoint" />
+            <mxPoint x="450" y="470" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="R-MjW9YE-7VI5NUZe0La-69" value="" style="endArrow=none;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" target="R-MjW9YE-7VI5NUZe0La-61">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="590" y="500" as="sourcePoint" />
+            <mxPoint x="450" y="470" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="R-MjW9YE-7VI5NUZe0La-70" value="" style="endArrow=none;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" target="R-MjW9YE-7VI5NUZe0La-59">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="590" y="390" as="sourcePoint" />
+            <mxPoint x="450" y="470" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="R-MjW9YE-7VI5NUZe0La-71" value="post" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="640" y="590" width="40" height="20" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
