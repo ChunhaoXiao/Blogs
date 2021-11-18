@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-11-18T11:13:42.275Z" agent="5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36" etag="gwCaJ43nMUBpx9Y8ClCp" version="15.8.2" type="github">
+<mxfile host="app.diagrams.net" modified="2021-11-18T11:26:32.772Z" agent="5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36" etag="nh6clRB5u2lepP096ggg" version="15.8.2" type="github">
   <diagram id="tkJnGF91Tr6Hp5H_-BvY" name="Page-1">
     <mxGraphModel dx="942" dy="614" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -76,6 +76,22 @@
         </mxCell>
         <mxCell id="R-MjW9YE-7VI5NUZe0La-46" value="通过sftp, 将签到记录传给ANAS,每天0点推送前一天的记录" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
           <mxGeometry x="190" y="490" width="320" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="R-MjW9YE-7VI5NUZe0La-47" value="ODS" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#b1ddf0;strokeColor=#10739e;" vertex="1" parent="1">
+          <mxGeometry x="780" y="100" width="60" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="R-MjW9YE-7VI5NUZe0La-48" value="" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.625;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="R-MjW9YE-7VI5NUZe0La-1" target="R-MjW9YE-7VI5NUZe0La-47">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="400" y="280" as="sourcePoint" />
+            <mxPoint x="750" y="150" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="610" y="310" />
+              <mxPoint x="610" y="150" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="R-MjW9YE-7VI5NUZe0La-49" value="通过sftp将已绑定医生的员&lt;br&gt;工数据、调查问卷信息、&lt;br&gt;CTA记录表、SSOCTA记录表&lt;br&gt;用户关注及取关历史记录表、&lt;br&gt;菜单点击记录表、&lt;br&gt;项目二维码扫描记录表、&lt;br&gt;会议签到人员数据、&lt;br&gt;辉瑞通行证登陆记录等&lt;br&gt;数据传递给ODS" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="615" y="155" width="170" height="130" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
